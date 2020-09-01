@@ -1,7 +1,8 @@
 import enum
-from sqlalchemy import Column, Integer, String, Enum, Numeric, Date
+from sqlalchemy import Column, Integer, String, Enum, Date
 from sqlalchemy.orm import relationship
-from database.db_base import Base
+from database.base import Base
+from database.currency_type import Currency
 
 
 class AccountType(enum.Enum):
@@ -16,8 +17,8 @@ class Account(Base):
 
     id = Column(Integer, primary_key=True)
     name = Column(String)
-    number = Column(String)
+    account_number = Column(String)
     type = Column(Enum(AccountType))
-    statement_balance = Column(Numeric(10, 2))
+    statement_balance = Column(Currency)
     statement_date = Column(Date)
     transactions = relationship("Transaction", back_populates="account")
