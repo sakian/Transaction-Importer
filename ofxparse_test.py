@@ -4,12 +4,13 @@ from ofxparse import OfxParser
 
 # with codecs.open('C:/Users/mark.bremer/Downloads/accountactivity(1).qfx') as file:
 with codecs.open('C:/Users/mark.bremer/Downloads/accountactivity.qfx') as file:
+# with codecs.open('C:/Users/mark.bremer/Downloads/accountactivity(4).ofx') as file:
     ofx = OfxParser.parse(file)
 
 print("ACCOUNT:")
 account = ofx.account
 print(account.account_id)           # The account number
-print(account.type)                 # type (1=Debit, 2=Credit)
+print(account.account_type)                 # type (1=Debit, 2=Credit)
 print(account.statement)            # A Statement object
 
 print("\nSTATEMENT:")
